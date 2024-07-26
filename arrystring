@@ -1,0 +1,131 @@
+using System;
+class Program
+{
+    static void stringmethod()
+    {
+        string input = "Welcome All";
+        Console.WriteLine("String is " + input);
+
+        //up
+        string upperCaseString = input.ToUpper();
+        Console.WriteLine($"Uppercase: {upperCaseString}");
+
+        //low
+        string lowerCaseString = input.ToLower();
+        Console.WriteLine($"Lowercase: {lowerCaseString}");
+
+        //firstoccur
+        Console.WriteLine("(first occurence) Enter character ");
+        char chr = Console.ReadLine()[0];
+        int index = input.IndexOf(chr);
+        if (index != -1)
+        {
+            Console.WriteLine($"first occurence of {chr} : {index}");
+        }
+        else
+        {
+            Console.WriteLine($"{chr} not found");
+        }
+
+        //replace 
+        string replace = "again";
+        string sreplace = input.Replace("All", "again");
+        Console.WriteLine(sreplace);
+
+        //length of string
+        Console.WriteLine($"length of the string: {input.Length}");
+
+        //extract
+        string substr = input.Substring(0, 7);
+        Console.WriteLine("example of substring : {0}", substr);
+
+        //concat
+        Console.Write("Enter string to concat : ");
+        string newstr = Console.ReadLine();
+        Console.WriteLine($"string after concat: {string.Concat(input, newstr)}");
+
+        //trim
+        string trim = input.Trim();
+        Console.WriteLine($"t_stirng: '{trim}'");
+
+        //split
+        Console.WriteLine("Enter character to split: ");
+        char schr = Console.ReadLine()[0];
+        string[] splitstr = input.Split(schr);
+        Console.WriteLine("Split string:");
+        foreach (string str in splitstr)
+        {
+            Console.WriteLine(str);
+        }
+    }
+    static void arrmethod()
+    {
+        int[] numbers = { 5, 2, 9, 1, 5, 6 };
+        Console.WriteLine("array :");
+        printarr(numbers);
+
+        //length
+        Console.WriteLine($"length :  {numbers.Length}");
+
+        //sorting
+        Array.Sort(numbers);
+        Console.WriteLine("sorted array :");
+        printarr(numbers);
+
+        //reverse
+        Array.Reverse(numbers);
+        Console.WriteLine("reversed array:");
+        printarr(numbers);
+
+        //find index
+        Console.WriteLine("(FIND INDEX) Enter a number :");
+        int numfind = int.Parse(Console.ReadLine());
+        int index = Array.IndexOf(numbers, numfind);
+        if (index != -1)
+        {
+            Console.WriteLine($"Index of {numfind}: {index}");
+        }
+        else
+        {
+            Console.WriteLine($"{numfind} not found in the array.");
+        }
+        int index2 = Array.BinarySearch(numbers,numfind );
+        Console.WriteLine($"index at {numfind} (using binarysearch)");
+
+        //resize
+        Console.WriteLine("Enter new size: ");
+        int newSize = int.Parse(Console.ReadLine());
+        Array.Resize(ref numbers, newSize);
+        Console.WriteLine("Resized array:");
+        printarr(numbers);
+
+        //clear
+        Console.WriteLine("Enter the starting index to clear: ");
+        int start = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter the number of elements to clear: ");
+        int count = int.Parse(Console.ReadLine());
+        Array.Clear(numbers,start, count);
+        Console.WriteLine("after clearing: ");
+        printarr(numbers);
+
+        //copy
+        int[] copiedArray = new int[numbers.Length];
+        Array.Copy(numbers, copiedArray, numbers.Length);
+        Console.WriteLine("copied array: ");
+        printarr(copiedArray);
+
+    }
+    static void printarr(int[] array)
+    {
+        foreach (int num in array)
+        {
+            Console.Write(num + " ");
+        }
+        Console.WriteLine();
+    }
+    static void Main(string[] args)
+    {
+        //stringmethod();
+        //arrmethod();
+    }
+}
