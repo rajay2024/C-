@@ -1,0 +1,126 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        // List<T> example
+        List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
+
+        // Add an element to the list
+        numbers.Add(6);
+        Console.WriteLine("List after adding 6:");
+        PrintList(numbers);
+
+        // Remove an element from the list
+        numbers.Remove(3);
+        Console.WriteLine("List after removing 3:");
+        PrintList(numbers);
+
+        // Check if the list contains an element
+        Console.WriteLine("List contains 4: " + numbers.Contains(4));
+
+        // Add a range of elements to the list
+        numbers.AddRange(new int[] { 7, 8, 9 });
+        Console.WriteLine("List after adding range 7, 8, 9:");
+        PrintList(numbers);
+
+        // Remove an element at a specific index
+        numbers.RemoveAt(2);
+        Console.WriteLine("List after removing element at index 2:");
+        PrintList(numbers);
+
+        // Clear the list
+        numbers.Clear();
+        Console.WriteLine("List after clearing:");
+        PrintList(numbers);
+
+        // Dictionary<TKey, TValue> example
+        Dictionary<string, int> ages = new Dictionary<string, int>
+        {
+            { "Alice", 30 },
+            { "Bob", 25 },
+            { "Charlie", 35 }
+        };
+
+        // Add an element to the dictionary
+        ages.Add("David", 40);
+        Console.WriteLine("Dictionary after adding David:");
+        PrintDictionary(ages);
+
+        // Remove an element from the dictionary
+        ages.Remove("Alice");
+        Console.WriteLine("Dictionary after removing Alice:");
+        PrintDictionary(ages);
+
+        // Try to get a value from the dictionary
+        if (ages.TryGetValue("Bob", out int age))
+        {
+            Console.WriteLine("Bob's age: " + age);
+        }
+        else
+        {
+            Console.WriteLine("Bob not found in the dictionary.");
+        }
+
+        // Check if the dictionary contains a key
+        Console.WriteLine("Dictionary contains key 'Charlie': " + ages.ContainsKey("Charlie"));
+
+        // Clear the dictionary
+        ages.Clear();
+        Console.WriteLine("Dictionary after clearing:");
+        PrintDictionary(ages);
+
+        // Queue<T> example
+        Queue<string> queue = new Queue<string>();
+
+        // Enqueue elements to the queue
+        queue.Enqueue("first");
+        queue.Enqueue("second");
+        queue.Enqueue("third");
+        Console.WriteLine("Queue after enqueuing elements:");
+        PrintQueue(queue);
+
+        // Dequeue an element from the queue
+        string dequeuedElement = queue.Dequeue();
+        Console.WriteLine($"Dequeued element: {dequeuedElement}");
+        Console.WriteLine("Queue after dequeuing an element:");
+        PrintQueue(queue);
+
+        // Peek at the front of the queue
+        string frontElement = queue.Peek();
+        Console.WriteLine($"Element at the front of the queue: {frontElement}");
+
+        // Clear the queue
+        queue.Clear();
+        Console.WriteLine("Queue after clearing:");
+        PrintQueue(queue);
+    }
+
+    static void PrintList<T>(List<T> list)
+    {
+        foreach (var item in list)
+        {
+            Console.Write(item + " ");
+        }
+        Console.WriteLine();
+    }
+
+    static void PrintDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
+    {
+        foreach (var kvp in dictionary)
+        {
+            Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+        }
+    }
+
+    static void PrintQueue<T>(Queue<T> queue)
+    {
+        foreach (var item in queue)
+        {
+            Console.Write(item + " ");
+        }
+        Console.WriteLine();
+    }
+}
