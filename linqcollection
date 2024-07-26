@@ -1,0 +1,67 @@
+class Program
+{
+    public class Person
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string City { get; set; }
+    }
+
+    
+    static void Main(string[] args)
+    {
+        List<Person> people = new List<Person>
+        {
+            new Person { Name = "Ajay", Age = 22, City= "Pune" },
+            new Person { Name = "Vignesh", Age = 21, City = "Chennai" },
+            new Person { Name = "Shoab", Age = 33, City = "Pune" },
+          
+        };
+
+        //filtering 
+        var pune = people.Where(p => p.City == "Pune");
+
+        foreach (var person in pune)
+        {
+            Console.WriteLine(person.Name);
+        }
+
+        //mapping
+        var names = people.Select(p => p.Name);
+
+        foreach (var name in names)
+        {
+            Console.WriteLine(name);
+        }
+
+        //grouping 
+        var groupcity = people.GroupBy(p => p.City);
+
+        foreach (var group in groupcity)
+        {
+            Console.WriteLine($"City: {group.Key}");
+            foreach (var person in group)
+            {
+                Console.WriteLine($" - {person.Name}");
+            }
+        }
+
+        //ordering 
+        var orderage = people.OrderBy(p => p.Age);
+
+        foreach (var person in orderage)
+        {
+            Console.WriteLine($"{person.Name}, Age: {person.Age}");
+        }
+
+        //all in one
+        var result = people.Where(p => p.City == "Chennai").OrderBy(p => p.Age).Select(p => p.Name);
+
+        foreach (var name in result)
+        {
+            Console.WriteLine(name);
+        }
+
+        //LINQ queries are generally executed in a lazy manner, meaning that the query is not actually run until you iterate over the results. This can be useful for performance reasons and allows for efficient querying on large data sets.
+    }
+}
