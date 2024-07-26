@@ -1,0 +1,55 @@
+class Program
+{
+    static void formatting()
+    {
+        //data types 
+        int a = 2;
+        long b = 5993303092933l ;
+        short c = -1;
+        float d = 3.14f;
+        char chr = 'a';
+
+        //formatting
+        int age = 22;
+        string name = "R Ajay";
+        double value = 1234.5678;
+        bool choice = false; //true
+        DateTime now = DateTime.Now;
+
+        //string interpolation
+        string message = $"Name: {name}, Age: {age}";
+        Console.WriteLine(message);
+
+        string formattedMessage = string.Format("Name: {0}, Age: {1}", name, age);
+        Console.WriteLine(formattedMessage);
+
+        //num
+        Console.WriteLine(value.ToString("C"));
+        Console.WriteLine(value.ToString("F2"));
+        Console.WriteLine(value.ToString("P"));
+
+        Console.WriteLine(now.ToString("yyyy-MM-dd"));
+        Console.WriteLine(now.ToString("dddd, MMMM dd, yyyy"));
+
+        //conversiton 
+        //implicit conversion 
+        int num1 = 42;
+        long num2 = num1;
+
+        float num3 = 3.14f;
+        double num4 = num3;
+
+        //explicit conversion
+        int num5 = (int)num4;
+        short num6 = (short)num3;
+
+        //using convert 
+        string str = "354";
+        int num7 = Convert.ToInt32(str);
+        string str2 = Convert.ToString(num7);
+    }
+    static void Main(string[] args)
+    {
+        formatting();
+    }
+}
